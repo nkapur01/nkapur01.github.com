@@ -1,4 +1,3 @@
-@media Screen{
 body {
 font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 background-image:url('nightskye.jpg');
@@ -48,9 +47,6 @@ a {
 color: #cccccc;
 text-decoration:none;
 }
-
-}
-
 
 
 
