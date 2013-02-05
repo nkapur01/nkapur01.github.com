@@ -7,22 +7,23 @@ text-align: left;
 }
 
 h1 {
+margin: 0 auto 0 auto;
 text-align:left;
 margin-top: 7%;
-font-size: 40px;
+font-size:60% ;
 background-color: black;
-width: 350px;
+width: 500px;
 height: 80px;
 }
 
 h1 img{
-float:left;
+float:none;
 margin-right: 5px;
 }
 
 h2 {
 background-color: red;
-font-size:15px;
+font-size:30%;
 width:170px;
 height:30px;
 }
