@@ -12,22 +12,24 @@ text-align:left;
 margin-top: 7%;
 font-size: 50px;
 background-color: black;
-width: 500px;
+width: 600px;
 height: 200px;
 }
 
 h1 img{
 float:left;
 margin-right: 5px;
-height:200px;
-width: 200px;
+height:175px;
+width: 175px;
 }
 
 h2 {
+margin: 0 auto 0 auto;
+text-align:left;
 background-color: black;
 font-size:40px;
 width:500px;
-height:200px;
+height:100px;
 }
 
 div {
