@@ -10,14 +10,14 @@ h1 {
 margin: 0 auto 0 auto;
 text-align:left;
 margin-top: 7%;
-font-size: 100px;
+font-size: 50px;
 background-color: black;
 width: 500px;
 height: 200px;
 }
 
 h1 img{
-float:none;
+float:left;
 margin-right: 5px;
 height:200px;
 width: 200px;
@@ -25,7 +25,7 @@ width: 200px;
 
 h2 {
 background-color: black;
-font-size:80px;
+font-size:40px;
 width:500px;
 height:200px;
 }
