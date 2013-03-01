@@ -1,0 +1,54 @@
+body {
+font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+background-image:url('nightskye.jpg');
+background-attachment:fixed;
+color:#cccccc;
+text-align: left;
+}
+
+h1 {
+text-align:left;
+margin-top: 7%;
+font-size: 40px;
+background-color: black;
+width: 350px;
+height: 80px;
+}
+
+h1 img{
+float:left;
+margin-right: 5px;
+width: 80px;
+height: 80px;
+}
+
+h2 {
+background-color: black;
+font-size:15px;
+width:170px;
+height:30px;
+}
+
+div {
+margin: 0 auto 0 auto; 
+text-align: left;
+background-color: black;
+width:500px; 
+}
+
+h3{
+text-decoration:underline;
+text-align:center;
+}
+
+h4{
+text-align:center;
+}
+
+a {
+color: #cccccc;
+text-decoration:none;
+}
+
+
+
