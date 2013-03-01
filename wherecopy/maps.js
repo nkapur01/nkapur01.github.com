@@ -20,12 +20,14 @@ function myLocation(){
 		lng=position.coords.longitude;
 		console.log(lng);
 		var location=new google.maps.LatLng(lat, lng);
-
+console.log("made location");
 		map.setCenter(location);
+		console.log("set new center");
 		var marker=new google.maps.Marker({
 			position: location,
 			title: "You are here"
 			});
+			console.log("marker made!");
 
 		});
 	
