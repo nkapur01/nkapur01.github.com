@@ -18,15 +18,9 @@ function myLocation(){
 		console.log(longitude)
 		var location=new google.maps.LatLng(latitude, longitude);
 
-		mapSetting={
-			center:location,
-			mapTypeId: google.maps.MapTypeID.ROADMAP
-		};
-		
-		//placing marker
-		var mark_point=new google.maps.Marker({
+		map.setCenter(location);
+		var marker=new google.maps.Marker({
 			position: location,
-			map: map,
 			title: "You are here"
 			});
 
