@@ -24,7 +24,7 @@ function myLocation(){
 		map.setCenter(location);
 		console.log("set new center");
 		var marker=new google.maps.Marker({
-			console.log("marker being made");
+			
 			position: location,
 			map: map,
 			title: "You are here"
