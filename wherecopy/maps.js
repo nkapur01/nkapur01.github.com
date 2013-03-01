@@ -18,7 +18,7 @@ function myLocation(){
 		navigator.geolocation.getCurrentPosition(function(position){
 		lat=position.coords.latitude;
 		lng=position.coords.longitude;
-		console.log(longitude);
+		console.log(lng);
 		var location=new google.maps.LatLng(latitude, longitude);
 
 		map.setCenter(location);
