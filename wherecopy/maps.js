@@ -19,7 +19,7 @@ function myLocation(){
 		lat=position.coords.latitude;
 		lng=position.coords.longitude;
 		console.log(lng);
-		var location=new google.maps.LatLng(latitude, longitude);
+		var location=new google.maps.LatLng(lat, lng);
 
 		map.setCenter(location);
 		var marker=new google.maps.Marker({
