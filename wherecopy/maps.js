@@ -7,10 +7,13 @@ function init(){
 	
  	map = new google.maps.Map(document.getElementById("map_canvas"),
             mapSetting);
-    myLocation;        
+
+    myLocation();
+
 }
 
 function myLocation(){
+
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(position){
 		lat=position.coords.latitude;
