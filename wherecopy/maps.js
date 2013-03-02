@@ -28,10 +28,10 @@ function myLocation(){
 				title: "You are here"
 			});
 			marker['infoWindow']=new google.maps.InfoWindow({
-			content:"I know where you live"
+				content:"I know where you live<br>" + String('lat')+ " ," + String('lng')
 			});
 			google.maps.event.addListener(marker, 'click', function() {
-			this['infoWindow'].open(map, this)
+				this['infoWindow'].open(map, this)
 			}); 
 		});
 	}
