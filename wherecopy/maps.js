@@ -20,7 +20,6 @@ function myLocation(){
 			var	lng=position.coords.longitude;
 		
 			var location=new google.maps.LatLng(lat, lng);
-				console.log("made location");
 				map.setCenter(location);
 			var marker=new google.maps.Marker({
 				position: location,
@@ -29,7 +28,7 @@ function myLocation(){
 			});
 			console.log("making infowindow");
 			marker['infoWindow']=new google.maps.InfoWindow({
-				content:"I know where you live<br>" + String('lat')+ " ," + String('lng')
+				content:"I know where you live<br>" + String(lat)+ " ," + String(lng)
 			});
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
