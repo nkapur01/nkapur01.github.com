@@ -26,9 +26,8 @@ function myLocation(){
 				map: map,
 				title: "You are here"
 			});
-			console.log("making infowindow");
 			marker['infoWindow']=new google.maps.InfoWindow({
-				content:"I know where you live<br>" + String(lat)+ " ," + String(lng)
+				content:"I know where you live<br>" + String(lat)+ " , " + String(lng)
 			});
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
@@ -82,4 +81,14 @@ Tstation=new Object;
 			this['infoWindow'].open(map, this)
 		}); 
 	}
+	parse();
 }			
+
+
+function parse(){
+
+
+
+
+
+}
