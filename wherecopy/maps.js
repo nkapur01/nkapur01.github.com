@@ -27,6 +27,7 @@ function myLocation(){
 				map: map,
 				title: "You are here"
 			});
+			console.log("making infowindow");
 			marker['infoWindow']=new google.maps.InfoWindow({
 				content:"I know where you live<br>" + String('lat')+ " ," + String('lng')
 			});
