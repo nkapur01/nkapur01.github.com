@@ -16,20 +16,26 @@ function myLocation(){
 
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(position){
-		var	lat=position.coords.latitude;
-		var	lng=position.coords.longitude;
+			var	lat=position.coords.latitude;
+			var	lng=position.coords.longitude;
 		
-		var location=new google.maps.LatLng(lat, lng);
-			console.log("made location");
-			map.setCenter(location);
-		var marker=new google.maps.Marker({
-			position: location,
-			map: map,
-			title: "You are here"
+			var location=new google.maps.LatLng(lat, lng);
+				console.log("made location");
+				map.setCenter(location);
+			var marker=new google.maps.Marker({
+				position: location,
+				map: map,
+				title: "You are here"
 			});
+			marker['infoWindow']=new google.maps.InfoWindow({
+			content:"I know where you live"
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+			this['infoWindow'].open(map, this)
+			}); 
 		});
-		t_locations();
 	}
+	t_locations();
 }
 
 function t_locations(){
@@ -68,7 +74,6 @@ Tstation=new Object;
 			title: 'T Station',
 			icon: 'mbta_pin.png'
 		});
-		
 		//add info window
 		marker['infoWindow']=new google.maps.InfoWindow({
 			content:Tstation[key]['station']
