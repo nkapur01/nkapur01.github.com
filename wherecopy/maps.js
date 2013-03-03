@@ -103,8 +103,8 @@ function closest_tstop(location){
     var R = 6371; // radius of earth in km
     var distances = [];
     var closest = -1;
-    var my_lat=marker[0].position.latitude;
-    var my_lng=marker[0].position.longitude;
+    var my_lat=map.marker[0].position.latitude;
+    var my_lng=map.marker[0].position.longitude;
     for( i=0;i<Tstop_positions.length; i++ ) {
         var Tlat = map.marker[i].position.latitude;
         var Tlng = map.marker[i].position.longitude;
