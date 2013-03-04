@@ -148,10 +148,10 @@ console.log("in closest tstop function");
     console.log("in for loop");
         var Tlat = Tstation[key]['position'].lat();
         var Tlng = Tstation[key]['position'].lng();
-        var dLat  = rad(my_lat - Tlat); //distance latitude
-        var dLng = rad(my_lng - Tlng); //distance longitude
+        var dLat  = (my_lat - Tlat).toRad(); //distance latitude
+        var dLng = (my_lng - Tlng).toRad(); //distance longitude
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(rad(Tlat)) * Math.cos(rad(Tlat)) * Math.sin(dLng/2) * Math.sin(dLng/2);
+            Math.cos(Tlat) * Math.cos(Tlat) * Math.sin(dLng/2) * Math.sin(dLng/2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         var d = R * c;
         distances[i] = d;
