@@ -38,6 +38,7 @@ function init(){
     myLocation();
     t_locations();
 	drawLine();
+	closest_tstop();
 }
 
 function myLocation(){
@@ -99,7 +100,8 @@ function drawLine(){
 	Tpath.setMap(map);
 }
 
-function closest_tstop(location){
+function closest_tstop(){
+console.log("in 
     var R = 6371; // radius of earth in km
     var distances = [];
     var closest = -1;
