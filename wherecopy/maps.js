@@ -101,13 +101,14 @@ function drawLine(){
 }
 
 function closest_tstop(){
-console.log("in 
+console.log("in closest tstop function);
     var R = 6371; // radius of earth in km
     var distances = [];
     var closest = -1;
     var my_lat=my_location.position.lat();
     var my_lng=my_location.position.lng();
     for( key in Tstation) {
+    console.log("in for loop");
         var Tlat = Tstation[key]['position'].position.lat();
         var Tlng = Tstation[key]['position'].position.lng();
         var dLat  = rad(my_lat - Tlat); //distance latitude
