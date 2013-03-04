@@ -56,7 +56,9 @@ function myLocation(){
 			});
 			closest_tstop(my_location);
 			marker['infoWindow']=new google.maps.InfoWindow({
-				content:"I know where you live<br>" + String(lat)+ " , " + String(lng)+ closest_tstop(my_location) + String(distance_to)
+				content:"I know where you live<br>" + String(lat)+ " , " + String(lng)+
+						"<br> The closest station is: " + closest_tstop(my_location) + 
+						"<br>It is "+String(distance_to)+ " miles away"
 			});
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
@@ -164,7 +166,8 @@ console.log("in closest tstop function");
         }
     }
 	distance_to=distances[closest];
-	return stations[i];
+	console.log(stations[closest];
+	return stations[closest];
 }
 
 function rad(x){
