@@ -38,7 +38,6 @@ function init(){
     myLocation();
     t_locations();
 	drawLine();
-	closest_tstop();
 }
 
 function myLocation(){
@@ -48,13 +47,14 @@ function myLocation(){
 			var	lat=position.coords.latitude;
 			var	lng=position.coords.longitude;
 		
-			my_location=new google.maps.LatLng(lat, lng);
+			var my_location=new google.maps.LatLng(lat, lng);
 				map.setCenter(my_location);
 			var marker=new google.maps.Marker({
 				position: my_location,
 				map: map,
 				title: "Your_Location"
 			});
+			closest_tstop(my_location);
 			marker['infoWindow']=new google.maps.InfoWindow({
 				content:"I know where you live<br>" + String(lat)+ " , " + String(lng)/*+ closest_tstop(location) + String(distance_to)*/
 			});
@@ -62,6 +62,7 @@ function myLocation(){
 				this['infoWindow'].open(map, this)
 			}); 
 		});
+		
 	}
 }
 
@@ -100,7 +101,7 @@ function drawLine(){
 	Tpath.setMap(map);
 }
 
-function closest_tstop(){
+function closest_tstop(my_location){
 console.log("in closest tstop function");
     var R = 6371; // radius of earth in km
     var distances = [];
