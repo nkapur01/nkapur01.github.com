@@ -166,7 +166,7 @@ console.log("in closest tstop function");
         }
     }
 	distance_to=distances[closest];
-	console.log(stations[closest];
+	console.log(stations[closest]);
 	return stations[closest];
 }
 
