@@ -101,7 +101,7 @@ function drawLine(){
 }
 
 function closest_tstop(){
-console.log("in closest tstop function);
+console.log("in closest tstop function");
     var R = 6371; // radius of earth in km
     var distances = [];
     var closest = -1;
