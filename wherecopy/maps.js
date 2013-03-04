@@ -56,7 +56,7 @@ function myLocation(){
 			});
 			closest_tstop(my_location);
 			marker['infoWindow']=new google.maps.InfoWindow({
-				content:"I know where you live<br>" + String(lat)+ " , " /*+ String(lng)+ closest_tstop(my_location) + String(distance_to)*/
+				content:"I know where you live<br>" + String(lat)+ " , " + String(lng)+ closest_tstop(my_location) + String(distance_to)
 			});
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
@@ -86,7 +86,6 @@ Tpositions=new Object;
 		google.maps.event.addListener(marker, 'click', function() {
 			this['infoWindow'].open(map, this)
 		}); 
-		console.log(Tstation[key]['position'].lat());
 	}
 }		
 
@@ -140,6 +139,7 @@ function closest_tstop(my_location){
 console.log("in closest tstop function");
     var R = 3963; // radius of earth in km
     var distances = [];
+    var stations=[];
     var closest = -1;
     var my_lat=my_location.lat();
     var my_lng=my_location.lng();
@@ -155,13 +155,16 @@ console.log("in closest tstop function");
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         var d = R * c;
         distances[i] = d;
+        stations[i]=Tstation[key]['position'];
         i++;
         if (closest == -1 || d < distances[closest] ) {
             closest = i;
+                        
+
         }
     }
-console.log(distances[closest]);
-	//distance_to=distances[closest];      
+	distance_to=distances[closest];
+	return stations[i];
 }
 
 function rad(x){
