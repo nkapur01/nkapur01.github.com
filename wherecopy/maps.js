@@ -138,7 +138,7 @@ function parse_times(){
 
 function closest_tstop(my_location){
 console.log("in closest tstop function");
-    var R = 6371; // radius of earth in km
+    var R = 3963; // radius of earth in km
     var distances = [];
     var closest = -1;
     var my_lat=my_location.lat();
@@ -148,10 +148,10 @@ console.log("in closest tstop function");
     console.log("in for loop");
         var Tlat = Tstation[key]['position'].lat();
         var Tlng = Tstation[key]['position'].lng();
-        var dLat  = (my_lat - Tlat).toRad(); //distance latitude
-        var dLng = (my_lng - Tlng).toRad(); //distance longitude
+        var dLat  = rad(my_lat - Tlat); //distance latitude
+        var dLng = rad(my_lng - Tlng); //distance longitude
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(Tlat) * Math.cos(Tlat) * Math.sin(dLng/2) * Math.sin(dLng/2);
+            Math.cos(rad(Tlat)) * Math.cos(rad(my_lat)) * Math.sin(dLng/2) * Math.sin(dLng/2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         var d = R * c;
         distances[i] = d;
@@ -162,4 +162,8 @@ console.log("in closest tstop function");
     }
 console.log(distances[closest]);
 	//distance_to=distances[closest];      
+}
+
+function rad(x){
+return x*Math.PI/180;
 }
