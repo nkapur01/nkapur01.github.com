@@ -183,7 +183,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc'];['longitude']));
+			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
 		console.log("carmen");
@@ -200,7 +200,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc'];['longitude']));
+			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
 		}
 	}
 }
