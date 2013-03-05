@@ -62,9 +62,8 @@ console.log("in my location");
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
 			}); 
-		
-		});	
 		init_request_cw();
+		});	
 	}
 }
 
