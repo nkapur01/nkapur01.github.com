@@ -152,7 +152,6 @@ function parse_times(location){
 }
 
 function init_request_cw(){
-	console.log("in init");
 	request2=new XMLHttpRequest();
 	request2.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
 	request2.send(null);
@@ -161,7 +160,6 @@ function init_request_cw(){
 
 function parse_helper_cw(){
 	if(request2.readyState == 4 && request2.status==200){
-	console.log(request2.readyState);
 		cw_locations=JSON.parse(request2.responseText);
 		parse_cw();
 	}
@@ -171,7 +169,6 @@ function parse_cw(){
 console.log(cw_locations.length);
 	for(i=0; i<cw_locations.length; i++){
 		if(cw_locations[i]['name']=='Waldo'){
-		console.log("waldo");
 			var waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
 			var wmarker=new google.maps.Marker({
 				position: waldo_loc,
@@ -181,7 +178,7 @@ console.log(cw_locations.length);
 			});
 			wmarker['infoWindow']=new google.maps.InfoWindow({
 				content:"You found me!<br>"+
-				"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude']+
+				"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)+
 				"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']).toFixed(4)+" miles away from you."
 			});
 			google.maps.event.addListener(wmarker, 'click', function(){
@@ -189,7 +186,6 @@ console.log(cw_locations.length);
 			});
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
-		console.log("carmen");
 			var carmen_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
 			var cmarker=new google.maps.Marker({
 				position: carmen_loc,
@@ -199,8 +195,8 @@ console.log(cw_locations.length);
 			});	
 			cmarker['infoWindow']=new google.maps.InfoWindow({
 				content:"You found me!<br>"+
-					"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude']+
-					"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'])+" miles away from you."
+					"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)+
+					"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'].toFixed(4))+" miles away from you."
 			});
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
