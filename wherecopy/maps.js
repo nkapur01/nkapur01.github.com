@@ -43,7 +43,7 @@ console.log("in my location");
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(position){
 		console.log("get current position");
-			var	mylat=position.coords.latitude;
+				mylat=position.coords.latitude;
 				mylng=position.coords.longitude;
 		
 			var my_location=new google.maps.LatLng(mylat, mylng);
@@ -63,7 +63,9 @@ console.log("in my location");
 				this['infoWindow'].open(map, this)
 			}); 
 		});	
-	init_request_cw(mylng, mylat)
+		console.log(mylat);
+		console.log(mylng);
+	init_request_cw();
 	}
 }
 
@@ -151,7 +153,7 @@ function parse_times(location){
 	}	
 }
 
-function init_request_cw(mylat, mylng){
+function init_request_cw(){
 	console.log("in init");
 	request2=new XMLHttpRequest();
 	request2.open("GET", "http://messagehub.herokuapp.com/a3.json", true);
@@ -159,7 +161,7 @@ function init_request_cw(mylat, mylng){
 	request2.onreadystatechange = parse_helper_cw;
 }
 
-function parse_helper_cw(mylat, mylng){
+function parse_helper_cw(){
 	if(request2.readyState == 4 && request2.status==200){
 	console.log(request2.readyState);
 		cw_locations=JSON.parse(request2.responseText);
@@ -167,7 +169,7 @@ function parse_helper_cw(mylat, mylng){
 	}
 }
 
-function parse_cw(mylat, mylng){
+function parse_cw(){
 console.log(cw_locations.length);
 	for(i=0; i<cw_locations.length; i++){
 		if(cw_locations[i]['name']=='Waldo'){
@@ -185,7 +187,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'], mylat, mylng));
+			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
 		console.log("carmen");
@@ -203,12 +205,12 @@ console.log(cw_locations.length);
 				this['infoWindow'].open(map, this)
 			});
 			console.log(cw_locations[i]['loc']['latitude'])
-			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'], mylat, mylng));
+			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
 		}
 	}
 }
 
-function distancefrom_cw(CWlat, CWlng, mylat, mylng){
+function distancefrom_cw(CWlat, CWlng){
     var R = 3963; // radius of earth in miles
     console.log(mylat);
     console.log(mylng);
