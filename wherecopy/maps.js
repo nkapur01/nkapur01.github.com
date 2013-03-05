@@ -55,7 +55,7 @@ console.log("in my location");
 			});
 			closest_tstop(my_location);
 			marker['infoWindow']=new google.maps.InfoWindow({
-				content:"I know where you live<br>" + String(lat)+ " , " + String(lng)+
+				content:"I know where you live<br>" + String(mylat)+ " , " + String(mylng)+
 						"<br> The closest station is: " + closest_tstop(my_location) + 
 						"<br>It is "+String(distance_to)+ " miles away"
 			});
