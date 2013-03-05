@@ -196,7 +196,7 @@ console.log(cw_locations.length);
 			cmarker['infoWindow']=new google.maps.InfoWindow({
 				content:"You found me!<br>"+
 					"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)+
-					"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'].toFixed(4)+" miles away from you."
+					"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']).toFixed(4)+" miles away from you."
 			});
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
