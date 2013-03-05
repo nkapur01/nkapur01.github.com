@@ -27,7 +27,7 @@ var distance_to; //distance to closest stop
 function init(){
 		mapSetting={
 		center: new google.maps.LatLng(42.3000, -71.8000),
-		zoom: 10,
+		zoom: 12,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	
@@ -134,6 +134,9 @@ function parse_helper_times(){
 		t_locations();
 		drawLine();
 	}
+	else if(request.status==0){
+		alert("Error! Please refresh page");
+	}
 }
 
 function parse_times(location){
@@ -162,6 +165,9 @@ function parse_helper_cw(){
 	if(request2.readyState == 4 && request2.status==200){
 		cw_locations=JSON.parse(request2.responseText);
 		parse_cw();
+	}
+	else if(request2.status==0){
+		alert("Error! Please refresh page");
 	}
 }
 
