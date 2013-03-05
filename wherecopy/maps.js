@@ -183,7 +183,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			distancefrom_cw(waldo_loc);
+		//	distancefrom_cw(waldo_loc);
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
 		console.log("carmen");
@@ -200,12 +200,12 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			distancefrom_cw(carmen_loc);
+//			distancefrom_cw(carmen_loc);
 		}
 	}
 }
 
-function distancefrom_cw(position_cw){
+/*function distancefrom_cw(position_cw){
     var R = 3963; // radius of earth in miles
     var lat;
     var lng;
@@ -220,7 +220,7 @@ function distancefrom_cw(position_cw){
     
 	return d;
 }
-
+*/
 
 function closest_tstop(my_location){
 console.log("in closest tstop function");
