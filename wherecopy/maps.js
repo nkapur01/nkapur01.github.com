@@ -183,7 +183,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			distancefrom_cw(waldo_loc);
+			console.log(distancefrom_cw(waldo_loc));
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
 		console.log("carmen");
@@ -200,7 +200,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			distancefrom_cw(carmen_loc);
+			console.log(distancefrom_cw(carmen_loc));
 		}
 	}
 }
