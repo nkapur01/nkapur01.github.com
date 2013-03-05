@@ -208,15 +208,20 @@ console.log(cw_locations.length);
 function distancefrom_cw(position_cw){
     var R = 3963; // radius of earth in miles
     var lat;
+    console.log(lat);
     var lng;
+    console.log(lng);
     var CWlat = position_cw.lat();
+    console.log(CWlat);
     var CWlng = position_cw.lng();
+    console.log(CWlng);
     var dLat  = rad(lat - CWlat); //distance latitude
     var dLng = rad(lat - CWlng); //distance longitude
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
         Math.cos(rad(CWlat)) * Math.cos(rad(lat)) * Math.sin(dLng/2) * Math.sin(dLng/2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;
+    console.log(d);
     
 	return d;
 }
