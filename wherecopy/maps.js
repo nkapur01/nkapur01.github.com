@@ -62,11 +62,8 @@ console.log("in my location");
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
 			}); 
-				console.log(mylat);
-		console.log(mylng);
+		init_request_cw();
 		});	
-	
-	init_request_cw();
 	}
 }
 
@@ -166,7 +163,7 @@ function parse_helper_cw(){
 	if(request2.readyState == 4 && request2.status==200){
 	console.log(request2.readyState);
 		cw_locations=JSON.parse(request2.responseText);
-		parse_cw(mylat, mylng);
+		parse_cw();
 	}
 }
 
