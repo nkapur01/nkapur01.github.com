@@ -183,7 +183,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-		//	distancefrom_cw(waldo_loc);
+			distancefrom_cw(waldo_loc);
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
 		console.log("carmen");
@@ -200,12 +200,12 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-//			distancefrom_cw(carmen_loc);
+			distancefrom_cw(carmen_loc);
 		}
 	}
 }
 
-/*function distancefrom_cw(position_cw){
+function distancefrom_cw(position_cw){
     var R = 3963; // radius of earth in miles
     var lat;
     var lng;
@@ -220,10 +220,9 @@ console.log(cw_locations.length);
     
 	return d;
 }
-*/
+
 
 function closest_tstop(my_location){
-console.log("in closest tstop function");
     var R = 3963; // radius of earth in miles
     var distances = [];
     var stations=[];
@@ -232,7 +231,6 @@ console.log("in closest tstop function");
     var my_lng=my_location.lng();
     var i=0;
     for( key in Tstation) {
-    console.log("in for loop");
         var Tlat = Tstation[key]['position'].lat();
         var Tlng = Tstation[key]['position'].lng();
         var dLat  = rad(my_lat - Tlat); //distance latitude
@@ -250,7 +248,6 @@ console.log("in closest tstop function");
         }
     }
 	distance_to=distances[closest];
-	console.log(stations[closest]);
 	return stations[closest];
 }
 
