@@ -183,40 +183,45 @@ function parse_helper_cw(){
 //Parse carmen/waldo json, display marker and infowindows on map
 function parse_cw(){
 console.log(cw_locations.length);
-	for(i=0; i<cw_locations.length; i++){
-		if(cw_locations[i]['name']=='Waldo'){
-			var waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
-			var wmarker=new google.maps.Marker({
-				position: waldo_loc,
-				map: map,
-				title: "Waldo's Location",
-				icon: "waldo.png"		
-			});
-			wmarker['infoWindow']=new google.maps.InfoWindow({
-				content:"You found me!<br>"+
-				"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)+
-				"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']).toFixed(4)+" miles away from you."
-			});
-			google.maps.event.addListener(wmarker, 'click', function(){
-				this['infoWindow'].open(map, this)
-			});
+	if(cw_locations.length==0){
+		alert("Carmen and Waldo are nowhere to be found!");
 		}
-		else if(cw_locations[i]['name']=='Carmen Sandiego'){
-			var carmen_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
-			var cmarker=new google.maps.Marker({
-				position: carmen_loc,
-				map: map,
-				title: "Carmen's Location",
-				icon: "carmen.png"
-			});	
-			cmarker['infoWindow']=new google.maps.InfoWindow({
-				content:"You found me!<br>"+
+	else{	
+		for(i=0; i<cw_locations.length; i++){
+			if(cw_locations[i]['name']=='Waldo'){
+				var waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
+				var wmarker=new google.maps.Marker({
+					position: waldo_loc,
+					map: map,
+					title: "Waldo's Location",
+					icon: "waldo.png"		
+				});
+				wmarker['infoWindow']=new google.maps.InfoWindow({
+					content:"You found me!<br>"+
 					"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)+
 					"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']).toFixed(4)+" miles away from you."
-			});
-			google.maps.event.addListener(cmarker, 'click', function(){
-				this['infoWindow'].open(map, this)
-			});
+				});
+				google.maps.event.addListener(wmarker, 'click', function(){
+					this['infoWindow'].open(map, this)
+				});
+			}
+			else if(cw_locations[i]['name']=='Carmen Sandiego'){
+				var carmen_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
+				var cmarker=new google.maps.Marker({
+					position: carmen_loc,
+					map: map,
+					title: "Carmen's Location",
+					icon: "carmen.png"
+				});	
+				cmarker['infoWindow']=new google.maps.InfoWindow({
+					content:"You found me!<br>"+
+						"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)+
+						"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']).toFixed(4)+" miles away from you."
+				});
+				google.maps.event.addListener(cmarker, 'click', function(){
+					this['infoWindow'].open(map, this)
+				});
+			}
 		}
 	}
 }
@@ -224,19 +229,12 @@ console.log(cw_locations.length);
 //Calculate distance between mylocation and carmen and/or waldo
 function distancefrom_cw(CWlat, CWlng){
     var R = 3963; // radius of earth in miles
-    console.log(mylat);
-    console.log(mylng);
-   // var CWlat = position_cw.lat();
-    console.log(CWlat);
-   // var CWlng = position_cw.lng();
-    console.log(CWlng);
     var dLat  = rad(mylat - CWlat); //distance latitude
     var dLng = rad(mylng - CWlng); //distance longitude
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
         Math.cos(rad(CWlat)) * Math.cos(rad(mylat)) * Math.sin(dLng/2) * Math.sin(dLng/2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;
-    console.log(d);
     
 	return d;
 }
