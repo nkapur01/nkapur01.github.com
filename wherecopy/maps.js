@@ -180,7 +180,9 @@ console.log(cw_locations.length);
 				icon: "waldo.png"		
 			});
 			wmarker['infoWindow']=new google.maps.InfoWindow({
-				content:"You found me!<br>"+"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude'] 
+				content:"You found me!<br>"+
+				"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude']+
+				"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'])+" miles away from you."
 			});
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
@@ -197,13 +199,15 @@ console.log(cw_locations.length);
 				icon: "carmen.png"
 			});	
 			cmarker['infoWindow']=new google.maps.InfoWindow({
-				content:"You found me!<br>"+"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude'] 
+				content:"You found me!<br>"+
+					"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude']+
+					"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude'])+" miles away from you."
 			});
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
 			console.log(cw_locations[i]['loc']['latitude'])
-			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
+			;
 		}
 	}
 }
