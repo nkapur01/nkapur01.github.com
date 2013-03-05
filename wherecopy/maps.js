@@ -200,7 +200,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			distancfrom_cw(carmen_loc);
+			distancefrom_cw(carmen_loc);
 		}
 	}
 }
