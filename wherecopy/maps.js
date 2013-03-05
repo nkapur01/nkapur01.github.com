@@ -55,9 +55,9 @@ console.log("in my location");
 			});
 			closest_tstop(my_location);
 			marker['infoWindow']=new google.maps.InfoWindow({
-				content:"I know where you live<br>" + String(mylat.toFixed(4))+ " , " + String(mylng.toFixed(4))+
+				content:"I know where you live<br>" +mylat.toFixed(4)+ " , " + mylng.toFixed(4)+
 						"<br> The closest station is: " + closest_tstop(my_location) + 
-						"<br>It is "+String(distance_to.toFixed(4))+ " miles away"
+						"<br>It is "+distance_to.toFixed(4)+ " miles away"
 			});
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
@@ -182,7 +182,7 @@ console.log(cw_locations.length);
 			wmarker['infoWindow']=new google.maps.InfoWindow({
 				content:"You found me!<br>"+
 				"I am at: "+cw_locations[i]['loc']['latitude']+", "+cw_locations[i]['loc']['longitude']+
-				"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'].toFixed(4), cw_locations[i]['loc']['longitude'].toFixed(4))+" miles away from you."
+				"<br> I am "+distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']).toFixed(4)+" miles away from you."
 			});
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
