@@ -39,8 +39,10 @@ function init(){
 }
 
 function myLocation(){
+console.log("in my location");
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(position){
+		console.log("get current position");
 				mylat=position.coords.latitude;
 				mylng=position.coords.longitude;
 		
