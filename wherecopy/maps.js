@@ -35,17 +35,16 @@ function init(){
 	
 	init_request_times();
 	myLocation();
-	init_request_cw();
 	
 }
 
 function myLocation(){
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(function(position){
-				lat=position.coords.latitude;
-				lng=position.coords.longitude;
+				mylat=position.coords.latitude;
+				mylng=position.coords.longitude;
 		
-			 my_location=new google.maps.LatLng(lat, lng);
+			 my_location=new google.maps.LatLng(mylat, mylng);
 				map.setCenter(my_location);
 			var marker=new google.maps.Marker({
 				position: my_location,
@@ -62,6 +61,7 @@ function myLocation(){
 				this['infoWindow'].open(map, this)
 			}); 
 		});	
+		init_request_cw();
 	}
 }
 
@@ -200,6 +200,7 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
+			console.log(cw_locations[i]['loc']['latitude'])
 			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
 		}
 	}
@@ -207,10 +208,8 @@ console.log(cw_locations.length);
 
 function distancefrom_cw(CWlat, CWlng){
     var R = 3963; // radius of earth in miles
-    var lat;
-    console.log(lat);
-    var lng;
-    console.log(lng);
+    console.log(mylat);
+    console.log(mylng);
    // var CWlat = position_cw.lat();
     console.log(CWlat);
    // var CWlng = position_cw.lng();
