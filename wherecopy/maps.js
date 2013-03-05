@@ -187,7 +187,6 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(wmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			console.log(distancefrom_cw(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']));
 		}
 		else if(cw_locations[i]['name']=='Carmen Sandiego'){
 		console.log("carmen");
@@ -206,8 +205,6 @@ console.log(cw_locations.length);
 			google.maps.event.addListener(cmarker, 'click', function(){
 				this['infoWindow'].open(map, this)
 			});
-			console.log(cw_locations[i]['loc']['latitude'])
-			;
 		}
 	}
 }
@@ -221,7 +218,7 @@ function distancefrom_cw(CWlat, CWlng){
    // var CWlng = position_cw.lng();
     console.log(CWlng);
     var dLat  = rad(mylat - CWlat); //distance latitude
-    var dLng = rad(mylat - CWlng); //distance longitude
+    var dLng = rad(mylng - CWlng); //distance longitude
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
         Math.cos(rad(CWlat)) * Math.cos(rad(mylat)) * Math.sin(dLng/2) * Math.sin(dLng/2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
