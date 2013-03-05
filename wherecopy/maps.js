@@ -62,9 +62,10 @@ console.log("in my location");
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
 			}); 
-		});	
-		console.log(mylat);
+				console.log(mylat);
 		console.log(mylng);
+		});	
+	
 	init_request_cw();
 	}
 }
