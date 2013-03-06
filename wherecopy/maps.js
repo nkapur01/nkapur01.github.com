@@ -53,6 +53,8 @@ console.log("in my location");
 		console.log("get current position");
 				mylat=position.coords.latitude;
 				mylng=position.coords.longitude;
+				console.log(mylat);
+				console.log(mylng);
 		
 			var my_location=new google.maps.LatLng(mylat, mylng);
 				map.setCenter(my_location);
