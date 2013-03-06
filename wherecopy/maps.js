@@ -1,3 +1,7 @@
+//Neena Kapur
+//Computer Science 20
+//Assignment 3
+
 Tstation=new Object;
 	Tstation['RALE']={'station':'Alewife Station', 'position':new google.maps.LatLng(42.395428, -71.142483)};
 	Tstation['RDAV']={'station':'Davis Station', 'position':new google.maps.LatLng(42.39674, -71.121815)};
@@ -23,6 +27,8 @@ Tstation=new Object;
 	Tstation['RBRA']={'station':'Braintree Station', 'position':new google.maps.LatLng(42.2078543, -71.001139)};
 	
 var distance_to; //distance to closest stop
+var mylat=400;
+var mylng=400;
 
 //Initializes map
 function init(){
@@ -33,8 +39,10 @@ function init(){
 	};
  	map = new google.maps.Map(document.getElementById("map_canvas"), mapSetting);  	
  	
+	myLocation(); //get my location
 	init_request_times();//get times for Tstations
-	myLocation();	
+	init_request_cw(); //get carmen's/waldo's location
+		
 }
 
 //set my location
@@ -62,10 +70,24 @@ console.log("in my location");
 			google.maps.event.addListener(marker, 'click', function() {
 				this['infoWindow'].open(map, this)
 			}); 
-		init_request_cw(); //call request for carmen/waldo function
 		});	
 	}
 }
+
+/*function make_cw_infowindows(){
+	var who_is_it;
+	
+	if(cmarker){
+		who_is_it='C';
+		cmarker['infoWindow']+="<br> I am "+distancefrom_cw(who_is_it);
+		});
+	}
+			
+	if(wmarker){
+		who_is_it='W'
+		wmarker['infoWindow']+="<br> I am "+distancefrom_cw(who_is_it);
+}
+*/
 
 //set Tlocations, make markers/info boxes
 function t_locations(){
@@ -182,14 +204,13 @@ function parse_helper_cw(){
 
 //Parse carmen/waldo json, display marker and infowindows on map
 function parse_cw(){
-console.log(cw_locations.length);
 	if(cw_locations.length==0){
 		alert("Carmen and Waldo are nowhere to be found!");
 		}
-	else{	
+	if(mylat!=400 & mylng!=400){	
 		for(i=0; i<cw_locations.length; i++){
 			if(cw_locations[i]['name']=='Waldo'){
-				var waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
+				waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
 				var wmarker=new google.maps.Marker({
 					position: waldo_loc,
 					map: map,
@@ -206,8 +227,8 @@ console.log(cw_locations.length);
 				});
 			}
 			else if(cw_locations[i]['name']=='Carmen Sandiego'){
-				var carmen_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
-				var cmarker=new google.maps.Marker({
+				carmen_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
+				cmarker=new google.maps.Marker({
 					position: carmen_loc,
 					map: map,
 					title: "Carmen's Location",
@@ -224,7 +245,44 @@ console.log(cw_locations.length);
 			}
 		}
 	}
+	else if(mylat==400 && mylng==400){
+		for(i=0; i<cw_locations.length; i++){
+			if(cw_locations[i]['name']=='Waldo'){
+				waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
+				var wmarker=new google.maps.Marker({
+					position: waldo_loc,
+					map: map,
+					title: "Waldo's Location",
+					icon: "waldo.png"		
+				});
+				wmarker['infoWindow']=new google.maps.InfoWindow({
+					content:"You found me!<br>"+
+					"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)
+				});
+				google.maps.event.addListener(wmarker, 'click', function(){
+					this['infoWindow'].open(map, this)
+				});
+			}
+			else if(cw_locations[i]['name']=='Carmen Sandiego'){
+				carmen_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
+				cmarker=new google.maps.Marker({
+					position: carmen_loc,
+					map: map,
+					title: "Carmen's Location",
+					icon: "carmen.png"
+				});	
+				cmarker['infoWindow']=new google.maps.InfoWindow({
+					content:"You found me!<br>"+
+						"I am at: "+cw_locations[i]['loc']['latitude'].toFixed(4)+", "+cw_locations[i]['loc']['longitude'].toFixed(4)
+				});
+				google.maps.event.addListener(cmarker, 'click', function(){
+					this['infoWindow'].open(map, this)
+				});
+			}
+		}
+	}
 }
+
 
 //Calculate distance between mylocation and carmen and/or waldo
 function distancefrom_cw(CWlat, CWlng){
