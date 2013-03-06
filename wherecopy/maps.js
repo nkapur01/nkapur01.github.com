@@ -204,10 +204,12 @@ function parse_helper_cw(){
 
 //Parse carmen/waldo json, display marker and infowindows on map
 function parse_cw(){
+console.log(mylat);
+console.log(mylng);
 	if(cw_locations.length==0){
 		alert("Carmen and Waldo are nowhere to be found!");
 		}
-	if(mylat!=400 & mylng!=400){	
+	if(mylat!=400 && mylng!=400){	
 		for(i=0; i<cw_locations.length; i++){
 			if(cw_locations[i]['name']=='Waldo'){
 				waldo_loc=new google.maps.LatLng(cw_locations[i]['loc']['latitude'], cw_locations[i]['loc']['longitude']);
